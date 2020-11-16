@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <title>ゆうえん東海</title>
+</head>
+
+<style>
+    body {
+        padding: 0px;
+        margin: 0px;
+        font-family: 'Kosugi Maru', sans-serif;
+        -ms-overflow-style: none;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    #pc_header {
+        background-color: #ffffea;
+        width: 220px;
+        height: 100vh;
+        position: fixed;
+    }
+
+    .logo {
+        margin: 0px;
+        padding-left: 20px;
+        color: #007e00;
+    }
+
+    #logo_div {
+        position: relative;
+        top: 40px;
+    }
+
+    #logo_div:hover {
+        opacity: 0.7;
+    }
+
+    #pc_header_li {
+        color: black;
+        padding-left: 20px;
+    }
+
+    #pc_header_li a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #pc_header_li {
+        margin-top: 40px;
+        font-size: 17px;
+        letter-spacing: 2px;
+    }
+
+    #pc_header_ul {
+        margin-top: 100px;
+        padding: 0px;
+        list-style: none;
+    }
+
+    .under_line {
+        display: inline-block;
+        /*텍스트에만 밑줄을 그리기 위해서*/
+        color: black;
+        text-decoration: none;
+    }
+
+    .under_line::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: black;
+        /*밑줄 색상*/
+        transition: width .3s;
+    }
+
+    /*밑줄용 요소를 클래스의 자식요소로 추가*/
+
+    .under_line:hover::after {
+        width: 100%;
+        transition: width 0.2s;
+        /*밑줄 속도*/
+    }
+
+    #pc_header {
+        display: none;
+    }
+
+    #m_header {
+        display: inline-block;
+        width: 100%;
+        position: fixed;
+        z-index: 5;
+    }
+
+    .m_logo {
+        margin: 0px;
+        color: #007e00;
+        padding-left: 15px;
+    }
+
+    #m_logo_div {
+        display: inline-block;
+        float: left;
+        margin: 7px
+    }
+
+    #m_nav_btn_open {
+        float: right;
+        margin: 7px;
+        height: 40px;
+        width: 40px;
+        background-color: #007e00;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    #m_nav_btn_close {
+        float: right;
+        margin: 7px;
+        height: 40px;
+        width: 40px;
+        background-color: #007e00;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 30px;
+        display: none;
+    }
+
+
+    @media screen and (min-width: 769px) {
+
+        /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
+        #m_header {
+            display: none;
+        }
+
+        #pc_header {
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+
+        /* 모바일에 사용될 스트일 시트를 여기에 작성합니다. */
+        #pc_header {
+            display: none;
+        }
+
+        #m_header {
+            display: block;
+        }
+
+        #main_content {
+            padding: 0px;
+        }
+    }
+</style>
+
+<body>
+    <div id="pc_header">
+        <div id="logo_div">
+            <h1 class="logo">ゆうえん</h1>
+            <h2 class="logo" style="padding-left: 130px">東海</h2>
+            <h5 class="logo">介護付有料老人ホーム</h5>
+        </div>
+
+        <ul id="pc_header_ul">
+            <li id="pc_header_li">
+                <a href="" class="under_line">ホーム</a>
+            </li>
+            <li id="pc_header_li">
+                <a href="" class="under_line">ゆうえんについて</a>
+            </li>
+            <li id="pc_header_li">
+                <a href="" class="under_line">ご利用料金</a>
+            </li>
+            <li id="pc_header_li">
+                <a href="" class="under_line">よくあるご質問</a>
+            </li>
+            <li id="pc_header_li">
+                <a href="" class="under_line">ゆうえんライフ</a>
+            </li>
+            <li id="pc_header_li">
+                <a href="" class="under_line">アクセス</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="m_header">
+        <div id="m_logo_div">
+            <h4 class="m_logo">介護付有料老人ホーム</h4>
+            <h2 class="m_logo">ゆうえん東海</h2>
+        </div>
+
+        <button id="m_nav_btn_open" onclick="slide_open()">≣</button>
+        <button id="m_nav_btn_close" onclick="slide_close()">X</button>
+    </div>
+
+    <div id="m_nav">
+        <ul>
+            <li>
+                <a href="" class="under_line">ホーム</a>
+            </li>
+            <li>
+                <a href="" class="under_line">ゆうえんについて</a>
+            </li>
+            <li>
+                <a href="" class="under_line">ご利用料金</a>
+            </li>
+            <li>
+                <a href="" class="under_line">よくあるご質問</a>
+            </li>
+            <li>
+                <a href="" class="under_line">ゆうえんライフ</a>
+            </li>
+            <li>
+                <a href="" class="under_line">アクセス</a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function slide_open() {
+            //오픈버튼 사라지게 하고
+            var open = document.getElementById("m_nav_btn_open");
+            open.style.display = "none";
+            //클로즈버튼 나타나게 하고
+            var close = document.getElementById("m_nav_btn_close");
+            close.style.display = "block";
+            //메뉴 등장
+            var menu = document.getElementById("m_nav");
+            menu.style.display = "block";
+        }
+
+        function slide_close() {
+            //오픈버튼 나타나게 하고
+            var open = document.getElementById("m_nav_btn_open");
+            open.style.display = "block";
+            //클로즈버튼 사라지게 하고
+            var close = document.getElementById("m_nav_btn_close");
+            close.style.display = "none";
+            //메뉴 사라짐
+            var menu = document.getElementById("m_nav");
+            menu.style.display = "none";
+        }
+    </script>
+
+    <style>
+        #m_nav {
+            background-color: rgba(255, 255, 255, 0.5);
+            position: fixed;
+            z-index: 4;
+            right: 0px;
+            height: 100vh;
+            width: 100%;
+            display: none;
+        }
+
+        #m_nav ul {
+            list-style: none;
+            padding: 0px;
+            letter-spacing: 2px;
+            position: relative;
+            top: 110px
+        }
+
+        #m_nav ul li {
+            padding-left: 70px;
+            font-size: 22px;
+            margin-top: 20px;
+        }
+
+        @media screen and (min-width: 768px) {
+            #m_nav {
+                width: 0px;
+                height: 0px;
+            }
+        }
+    </style>
+
+
+    <div id="main_content" class="pc_content">
+        <div id="main_photo" class="fade-in">
+        </div>
+    </div>
+
+    <div id="notice_div" class="pc_content">
+        <div id="notice">
+            <table>
+                <tr>
+                    <td colspan="2">おしらせ</td>
+                </tr>
+                <tr>
+                    <td>2020.6.29</td>
+                    <td style="padding-left: 30px">ジャズダンス</td>
+                </tr>
+                <tr>
+                    <td>2020.6.29</td>
+                    <td style="padding-left: 30px">音楽レク</td>
+                </tr>
+                <tr>
+                    <td>2020.6.29</td>
+                    <td style="padding-left: 30px">サンフェローズ体操</td>
+                </tr>
+                <tr>
+                    <td>2020.6.3</td>
+                    <td style="padding-left: 30px">紙芝居</td>
+                </tr>
+                <tr>
+                    <td>2020.6.3</td>
+                    <td style="padding-left: 30px">ジャズダンス</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="info1" class="pc_content">
+
+    </div>
+    <style>
+    </style>
+
+    <div id="footer" class="pc_content">
+        <span id="copyright">Created by eomchny kanwon university</span>
+    </div>
+    <style>
+        #footer {
+            background-color: #d4d4d1;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        #copyright {
+            font-size: 15px;
+        }
+    </style>
+
+
+    <style>
+        .pc_content {
+            padding-left: 220px;
+        }
+
+        #main_photo {
+            height: 100vh;
+            background-image: url(main.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 1s;
+        }
+
+        .fade-in,
+        #m_header {
+            animation: fadeIn ease 0.5s;
+            -webkit-animation: fadeIn ease 0.5s;
+            -moz-animation: fadeIn ease 0.5s;
+            -o-animation: fadeIn ease 0.5s;
+            -ms-animation: fadeIn ease 0.5s;
+        }
+
+        #notice_div {
+            padding-left: 250px;
+        }
+
+        #notice_div table {
+        }
+
+        #notice_div table td {
+            letter-spacing: 2px;
+        }
+
+        #notice_div table {
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .pc_content {
+                padding: 0px;
+            }
+
+            .fade-in {
+                animation: none;
+            }
+
+            #notice_div {
+                padding-left: 30px;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-ms-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+
+</body></html>
